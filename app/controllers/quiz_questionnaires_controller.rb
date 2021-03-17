@@ -231,6 +231,7 @@ class QuizQuestionnairesController < QuestionnairesController
       params[:question].each_key do |question_key|
         if params[:question][question_key][:txt].strip.empty?
           # question text is empty, delete the question
+          flash[:note] = "Question text is empty, so the question has been deleted"
           Question.delete(question_key)
         else
           # Update existing question.
